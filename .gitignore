@@ -1,0 +1,11 @@
+node_modules/
+out/
+*.vsix
+*.tsbuildinfo
+*.log
+.DS_Store
+
+# The reference/ folder holds the proprietary .NET pattern sources you transcribe from.
+# Never commit them: keep them local only.
+reference/*
+!reference/README.md

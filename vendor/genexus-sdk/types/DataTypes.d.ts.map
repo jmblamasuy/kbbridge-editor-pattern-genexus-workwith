@@ -1,0 +1,1 @@
+{"version":3,"file":"DataTypes.d.ts","sourceRoot":"","sources":["../../src/types/DataTypes.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH;;GAEG;AACH,oBAAY,OAAO;IACjB,OAAO,YAAY;IACnB,SAAS,cAAc;IACvB,OAAO,YAAY;IACnB,WAAW,gBAAgB;IAC3B,IAAI,SAAS;IACb,QAAQ,aAAa;IACrB,OAAO,YAAY;IACnB,MAAM,WAAW,CAAK,cAAc;IACpC,IAAI,SAAS;IACb,IAAI,SAAS;IACb,KAAK,UAAU;CAChB"}

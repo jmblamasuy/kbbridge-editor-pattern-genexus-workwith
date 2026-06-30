@@ -1,0 +1,15 @@
+# Exclude everything that should NOT ship inside the .vsix.
+src/**
+vendor/**
+reference/**
+ai/**
+scripts/**
+node_modules/**
+**/*.ts
+**/*.map
+tsconfig.json
+.gitignore
+.vscode/**
+
+# Keep: out/** (including out/node_modules produced by scripts/bundle-dependencies.js),
+# package.json, README.md, LICENSE, CHANGELOG.md
