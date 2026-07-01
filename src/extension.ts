@@ -34,13 +34,32 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   const kbEditor = vscode.extensions.getExtension<VisualEditorAPI>(KB_EDITOR_EXTENSION_ID);
   if (!kbEditor) {
-    log(`KB Editor (${KB_EDITOR_EXTENSION_ID}) not found. Work With features are unavailable.`);
+    const msg = `KB Editor (${KB_EDITOR_EXTENSION_ID}) is not installed. Install/enable it and reload.`;
+    log(msg);
+    void vscode.window.showWarningMessage(`GeneXus Work With: ${msg}`);
     return;
   }
 
-  const api = kbEditor.isActive ? kbEditor.exports : await kbEditor.activate();
+  const kbVersion = kbEditor.packageJSON?.version ?? 'unknown';
+  log(`Found KB Editor v${kbVersion} (active=${kbEditor.isActive}).`);
+
+  // activate() returns the cached exports when the extension is already active — more robust
+  // than reading `.exports`, which can be undefined mid-activation.
+  let api: VisualEditorAPI | undefined;
+  try {
+    api = await kbEditor.activate();
+  } catch (error) {
+    log(`Error while activating KB Editor: ${error}`);
+  }
+
+  log(`KB Editor API keys: [${api ? Object.keys(api).join(', ') : '(none)'}]`);
+
   if (!api || !api.patternAPI) {
-    log('Could not obtain patternAPI from KB Editor.');
+    const msg =
+      `Your KB Editor (v${kbVersion}) does not expose the pattern extensibility API. ` +
+      `Please update KB Editor to a version that supports pattern extensions.`;
+    log(`Could not obtain patternAPI from KB Editor. ${msg}`);
+    void vscode.window.showWarningMessage(`GeneXus Work With: ${msg}`);
     return;
   }
 
