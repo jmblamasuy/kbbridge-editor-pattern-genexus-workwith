@@ -9,7 +9,7 @@ It is **two things at once**:
    `WorkWith` pattern instances get a better editing experience.
 2. The **worked reference example** for the *Pattern Extensibility for KB Editor*
    documentation — a faithful TypeScript port of the GeneXus *Work With* pattern's editor
-   behavior, showing all three extensibility mechanisms against `@kbbridge/genexus-sdk`.
+   behavior, showing all three extensibility mechanisms against [`@kbbridge/genexus-sdk`](https://github.com/jmblamasuy/kbbridge-editor-genexus-sdk).
 
 > **Learning to build your own pattern extension? Read
 > [`ai/START-HERE.md`](ai/START-HERE.md)** and
@@ -44,6 +44,6 @@ The TypeScript in this repository is original work, distributed under the **MIT*
 (see `LICENSE`). It **implements the editor behavior of the GeneXus *Work With* pattern**,
 transcribed from the pattern sources that GeneXus distributes in its Platform SDK. Those C#
 sources are **not** included here (they live only in a local, git-ignored `reference/`
-folder). See **`NOTICE.md`**. *Work With* and *GeneXus* are trademarks of their respective
+folder). See **[`NOTICE.md`](NOTICE.md)**. *Work With* and *GeneXus* are trademarks of their respective
 owners. If you redistribute this extension publicly, confirm the applicable terms with
 GeneXus.

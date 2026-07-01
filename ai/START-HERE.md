@@ -28,7 +28,7 @@ plain text, captions fall back to the XML/tag name, and there are no extra comma
 2. **[PATTERN-STRUCTURE.md](PATTERN-STRUCTURE.md)** — how a GeneXus pattern is defined
    (`.Pattern`, `*Instance.xml`, `*Settings.xml`) and how properties map to editor types,
    including where `custom(...)` types come from.
-3. **[SDK-REFERENCE.md](SDK-REFERENCE.md)** — the exact `@kbbridge/genexus-sdk` surface you
+3. **[SDK-REFERENCE.md](SDK-REFERENCE.md)** — the exact [`@kbbridge/genexus-sdk`](https://github.com/jmblamasuy/kbbridge-editor-genexus-sdk) surface you
    code against (copy the signatures from here).
 4. The three mechanisms, in depth:
    - **[EXTENSIBILITY-CUSTOM-TYPES.md](EXTENSIBILITY-CUSTOM-TYPES.md)**

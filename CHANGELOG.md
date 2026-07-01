@@ -39,4 +39,4 @@ This project adheres to [Semantic Versioning](https://semver.org/).
   - **Custom Types** — `GridCustomRender` combo editor.
   - **Captions** — dynamic caption for the `Modes` node (`modes (Insert, Update, ...)`).
   - **Custom Actions** — "Add Filter Variable" command on the `FilterAttributes` node.
-- Built against `@kbbridge/genexus-sdk` (vendored).
+- Built against [`@kbbridge/genexus-sdk`](https://github.com/jmblamasuy/kbbridge-editor-genexus-sdk) (vendored).
