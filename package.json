@@ -2,7 +2,7 @@
   "name": "genexus-workwith-kb-editor",
   "displayName": "GeneXus Work With for KB Editor",
   "description": "Adds custom types, captions and context commands for the GeneXus Work With pattern inside KB Editor.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "kbbridge",
   "engines": {
     "vscode": "^1.74.0"
@@ -23,9 +23,6 @@
   "main": "./out/extension.js",
   "activationEvents": [
     "onStartupFinished"
-  ],
-  "extensionDependencies": [
-    "kbbridge.genexus-visual-editor"
   ],
   "scripts": {
     "compile": "tsc",
