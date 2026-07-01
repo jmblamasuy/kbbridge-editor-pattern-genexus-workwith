@@ -3,6 +3,14 @@
 All notable changes to **GeneXus Work With for KB Editor** are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.3] - 2026-07-01
+
+### Added
+- Bundle the `Event` icon (used by the `Actions` / `Action` / `Modes` nodes). GeneXus declares
+  it in a different assembly (`Artech.Genexus.UI.Resources`) than the rest of the Work With
+  icons, so it was missing from the initial icon set and those nodes fell back to a generic
+  glyph; they now render the real icon.
+
 ## [0.1.2] - 2026-07-01
 
 ### Added
