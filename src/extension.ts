@@ -8,6 +8,7 @@
  */
 
 import * as vscode from 'vscode';
+import * as path from 'path';
 import { PatternExtensionAPI } from '@kbbridge/genexus-sdk';
 import { WorkWithCustomTypeSupport } from './workwith/WorkWithCustomTypeSupport';
 import { WorkWithEditorHelper } from './workwith/WorkWithEditorHelper';
@@ -64,8 +65,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   }
 
   const patternAPI = api.patternAPI;
+  const iconsDir = path.join(context.extensionUri.fsPath, 'icons');
   patternAPI.registerCustomTypeSupport(PATTERN_TYPE, new WorkWithCustomTypeSupport());
-  patternAPI.registerEditorHelper(PATTERN_TYPE, new WorkWithEditorHelper());
+  patternAPI.registerEditorHelper(PATTERN_TYPE, new WorkWithEditorHelper(iconsDir));
 
   context.subscriptions.push({
     dispose: () => {

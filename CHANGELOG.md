@@ -3,6 +3,15 @@
 All notable changes to **GeneXus Work With for KB Editor** are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] - 2026-07-01
+
+### Added
+- **Node icons.** Bundles the Work With pattern's icons under `icons/` and delivers them to
+  KB Editor via the new `IPatternEditorHelper.getNodeIcon` hook (as `data:` URIs). GeneXus
+  declares these icons as .NET assembly resources, which don't exist as files on the client;
+  bundling + delivering them makes the tree show real icons without the GeneXus SDK/DLLs at
+  runtime. (Requires a KB Editor build that calls `getNodeIcon`.)
+
 ## [0.1.1] - 2026-07-01
 
 ### Changed

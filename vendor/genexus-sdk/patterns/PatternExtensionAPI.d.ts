@@ -203,6 +203,23 @@ export interface IPatternEditorHelper {
      */
     getCommands?(element: PatternInstanceElement): PatternEditorCommand[];
     /**
+     * Provee el ícono de un nodo del árbol como recurso self-contained del package.
+     *
+     * Útil para patterns cuyos íconos son recursos internos de un assembly .NET
+     * (`Icon="<Name>" IconResource="...,<Assembly>"`) y por lo tanto NO existen como archivo
+     * en la KB/instalación del cliente. El package bundlea esas imágenes y las entrega acá,
+     * típicamente como un **data URI** (ej. `data:image/x-icon;base64,...`).
+     *
+     * KB Editor lo llama al construir cada nodo, DESPUÉS de intentar resolver el `Icon` del
+     * schema como archivo y ANTES del ícono de fallback. Devolver `undefined` para dejar que
+     * KB Editor use su fallback.
+     *
+     * @param element - Nodo a mostrar
+     * @param iconName - Valor del atributo `Icon` del schema para ese elementType (si lo hay)
+     * @returns Un data URI (o una URI servible por el webview), o `undefined`
+     */
+    getNodeIcon?(element: PatternInstanceElement, iconName?: string): string | undefined;
+    /**
      * Inicializa valores de un elemento recién creado.
      * Equivalente a: InitializeElement(element, sourceObject)
      *
