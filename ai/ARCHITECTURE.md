@@ -30,14 +30,27 @@ hands you the API object at runtime.
 
 ## Activation & registration lifecycle
 
-1. VS Code activates your extension (`onStartupFinished`). Because your `package.json`
-   declares `"extensionDependencies": ["kbbridge.genexus-visual-editor"]`, KB Editor is
-   guaranteed to be present and activated first.
-2. You obtain the host API:
+1. VS Code activates your extension (`onStartupFinished`). Your `package.json` declares
+   `"extensionDependencies": ["kbbridge.genexus-visual-editor"]`, which *should* make KB Editor
+   activate first — but on some setups that ordering is not honored, so don't rely on it
+   (see step 2).
+2. You obtain the host API, tolerating activation ordering. `kbEditor.activate()` resolves with
+   KB Editor's exports, but if KB Editor reports active while its activation is still in flight
+   the exports can momentarily be undefined — so retry until `patternAPI` surfaces instead of
+   giving up (and warning the user) on the first attempt:
    ```ts
+   async function acquirePatternAPI(kbEditor) {
+     const deadline = Date.now() + 15000;
+     for (;;) {
+       const api = await kbEditor.activate().catch(() => undefined);
+       const resolved = api ?? kbEditor.exports;
+       if (resolved?.patternAPI) return resolved.patternAPI;
+       if (Date.now() >= deadline) return undefined;
+       await new Promise((r) => setTimeout(r, 300));
+     }
+   }
    const kbEditor = vscode.extensions.getExtension('kbbridge.genexus-visual-editor');
-   const api = kbEditor.isActive ? kbEditor.exports : await kbEditor.activate();
-   const patternAPI = api.patternAPI;   // PatternExtensionAPI
+   const patternAPI = await acquirePatternAPI(kbEditor);   // PatternExtensionAPI | undefined
    ```
 3. You register providers for your pattern type:
    ```ts

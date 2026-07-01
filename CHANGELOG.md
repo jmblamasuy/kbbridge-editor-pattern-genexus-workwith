@@ -3,6 +3,16 @@
 All notable changes to **GeneXus Work With for KB Editor** are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.4] - 2026-07-01
+
+### Fixed
+- **Activation-ordering resilience.** The extension no longer warns "KB Editor does not expose
+  the pattern extensibility API" when it merely activated before KB Editor finished exposing
+  its API. It now retries acquiring `patternAPI` for a short window (KB Editor can report itself
+  active while its exports are still being populated), so on setups where the
+  `extensionDependencies` activation order is not honored the providers still register once KB
+  Editor is ready, instead of failing on the first attempt.
+
 ## [0.1.3] - 2026-07-01
 
 ### Added
